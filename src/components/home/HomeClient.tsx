@@ -424,7 +424,7 @@ export function HomeClient({
                       loading="eager"
                     />
                     <span className="font-bold text-navy-900 line-clamp-1">{brand.name}</span>
-                    <span className="text-[13px] text-navy-400 mt-1 font-medium">{brand.count} Car</span>
+                    <span className="text-[13px] text-navy-400 mt-1 font-medium">{brand.count} {brand.count === 1 ? 'Car' : 'Cars'}</span>
                   </Link>
                 ))}
               </div>
