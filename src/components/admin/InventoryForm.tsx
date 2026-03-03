@@ -14,6 +14,16 @@ interface InventoryFormProps {
     id?: string;
 }
 
+const FEATURE_CATEGORIES = {
+    convenience: ['Adaptive Cruise', 'Heated Seats', 'Navigation', 'Keyless Start', 'Automatic Climate Control', 'A/C: Front', 'Cruise Control', 'Phone connectivity', 'In-car Wi-Fi'],
+    entertainment: ['Premium Audio', 'Apple CarPlay', 'Android Auto', 'Bluetooth', 'Touch Screen', 'Audio system', 'Touchscreen display', 'GPS navigation'],
+    safety: ['Backup Camera', 'Blind Spot Monitor', 'Lane Assist', 'Emergency Braking', 'Anti Lock Braking System', 'Passenger Airbag', 'Driver Airbag', 'Power Locks'],
+    exterior: ['LED Lights', 'Panoramic Sunroof', 'Roof Rack', 'Tow Package', 'Alloy Wheels', 'Fog Lights - Front', 'Chrome-plated grill', 'Smart headlight cluster', 'Premium wheels', 'Body character lines', 'High-quality paint'],
+    interior: ['Multi-function Steering Wheel', 'Power Windows Rear', 'Power Windows Front', 'Engine Start Stop Button', 'Power Steering'],
+    seating: ['Spare Tire', 'Cargo Mat', 'First Aid Kit'],
+    other: ['Spare Tire', 'Cargo Mat', 'First Aid Kit']
+};
+
 export default function InventoryForm({ initialData, isEdit, id }: InventoryFormProps) {
     const { showToast } = useToast();
     const router = useRouter();
@@ -167,6 +177,20 @@ export default function InventoryForm({ initialData, isEdit, id }: InventoryForm
         });
     };
 
+    const handleSelectAll = (category: keyof typeof features) => {
+        const allFeatures = FEATURE_CATEGORIES[category];
+        setFeatures(prev => {
+            const current = prev[category];
+            if (current.length === allFeatures.length) {
+                // If all are selected, deselect all
+                return { ...prev, [category]: [] };
+            } else {
+                // Otherwise select all
+                return { ...prev, [category]: [...allFeatures] };
+            }
+        });
+    };
+
     const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
         if (!files) return;
@@ -225,12 +249,12 @@ export default function InventoryForm({ initialData, isEdit, id }: InventoryForm
         try {
             // 1. Upload new files or external URLs to Cloudinary
             const processedImages = [...images];
-            const needsUpload = processedImages.filter((img: any) => 
+            const needsUpload = processedImages.filter((img: any) =>
                 img.status === 'new' && (img.file || (img.url && !img.url.includes('cloudinary.com') && img.url.startsWith('http')))
             );
 
             if (needsUpload.length > 0) {
-                const signRes = await fetch('/api/admin/cloudinary-sign', { 
+                const signRes = await fetch('/api/admin/cloudinary-sign', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ folder: 'lithia-auto-inventory' })
@@ -241,7 +265,7 @@ export default function InventoryForm({ initialData, isEdit, id }: InventoryForm
                     const img = processedImages[i];
                     const isNewFile = img.status === 'new' && img.file;
                     const isExternalUrl = img.status === 'new' && !img.file && img.url && !img.url.includes('cloudinary.com') && img.url.startsWith('http');
-                    
+
                     if (isNewFile || isExternalUrl) {
                         const fd = new FormData();
                         fd.append('file', img.file || img.url);
@@ -530,21 +554,30 @@ export default function InventoryForm({ initialData, isEdit, id }: InventoryForm
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                        {(Object.keys(features) as Array<keyof typeof features>).map((cat: string) => (
+                        {(Object.keys(FEATURE_CATEGORIES) as Array<keyof typeof features>).map((cat) => (
                             <div key={cat}>
-                                <h4 className="font-bold text-[10px] uppercase text-navy-400 mb-3 border-b border-light-200 pb-1">{cat}</h4>
+                                <div className="flex items-center justify-between mb-3 border-b border-light-200 pb-1">
+                                    <h4 className="font-bold text-[10px] uppercase text-navy-400">{cat}</h4>
+                                    <button
+                                        type="button"
+                                        onClick={() => handleSelectAll(cat)}
+                                        className="text-[9px] font-bold text-gold-600 hover:text-gold-700 uppercase tracking-wider"
+                                    >
+                                        {features[cat].length === FEATURE_CATEGORIES[cat].length ? 'Deselect All' : 'Select All'}
+                                    </button>
+                                </div>
                                 <div className="space-y-2">
-                                    {(cat === 'convenience' ? ['Adaptive Cruise', 'Heated Seats', 'Navigation', 'Keyless Start', 'Automatic Climate Control', 'A/C: Front', 'Cruise Control', 'Phone connectivity', 'In-car Wi-Fi'] :
-                                        cat === 'entertainment' ? ['Premium Audio', 'Apple CarPlay', 'Android Auto', 'Bluetooth', 'Touch Screen', 'Audio system', 'Touchscreen display', 'GPS navigation'] :
-                                            cat === 'safety' ? ['Backup Camera', 'Blind Spot Monitor', 'Lane Assist', 'Emergency Braking', 'Anti Lock Braking System', 'Passenger Airbag', 'Driver Airbag', 'Power Locks'] :
-                                                cat === 'exterior' ? ['LED Lights', 'Panoramic Sunroof', 'Roof Rack', 'Tow Package', 'Alloy Wheels', 'Fog Lights - Front', 'Chrome-plated grill', 'Smart headlight cluster', 'Premium wheels', 'Body character lines', 'High-quality paint'] :
-                                                    cat === 'interior' ? ['Multi-function Steering Wheel', 'Power Windows Rear', 'Power Windows Front', 'Engine Start Stop Button', 'Power Steering'] :
-                                                        ['Spare Tire', 'Cargo Mat', 'First Aid Kit']).map((f: string) => (
-                                                            <label key={f} className="flex items-center gap-2 cursor-pointer group">
-                                                                <input type="checkbox" checked={features[cat as keyof typeof features].includes(f)} onChange={() => handleFeatureChange(cat as keyof typeof features, f)} className="rounded text-gold-500" />
-                                                                <span className="text-xs text-navy-700 group-hover:text-gold-600">{f}</span>
-                                                            </label>
-                                                        ))}
+                                    {FEATURE_CATEGORIES[cat].map((f: string) => (
+                                        <label key={f} className="flex items-center gap-2 cursor-pointer group">
+                                            <input
+                                                type="checkbox"
+                                                checked={features[cat].includes(f)}
+                                                onChange={() => handleFeatureChange(cat, f)}
+                                                className="rounded text-gold-500"
+                                            />
+                                            <span className="text-xs text-navy-700 group-hover:text-gold-600">{f}</span>
+                                        </label>
+                                    ))}
                                 </div>
                             </div>
                         ))}
