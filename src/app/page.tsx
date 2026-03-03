@@ -3,6 +3,7 @@ import connectToDatabase from '@/lib/db';
 import Car from '@/models/Car';
 import BlogPost from '@/models/BlogPost';
 import Make from '@/models/Make';
+import Delivery from '@/models/Delivery';
 
 async function getInventory() {
   await connectToDatabase();
@@ -43,12 +44,19 @@ async function getMakes() {
   return JSON.parse(JSON.stringify(makes));
 }
 
+async function getDeliveries() {
+  await connectToDatabase();
+  const deliveries = await Delivery.find({}).sort({ createdAt: -1 });
+  return JSON.parse(JSON.stringify(deliveries));
+}
+
 export default async function HomePage() {
-  const [inventory, featured, blogs, makes] = await Promise.all([
+  const [inventory, featured, blogs, makes, deliveries] = await Promise.all([
     getInventory(),
     getFeatured(),
     getBlogs(),
-    getMakes()
+    getMakes(),
+    getDeliveries()
   ]);
 
   // Fallback for featured logic if none tagged
@@ -70,11 +78,12 @@ export default async function HomePage() {
   }
 
   return (
-    <HomeClient 
+    <HomeClient
       initialInventory={inventory}
       initialFeatured={activeFeatured}
       initialBlogs={blogs}
       initialMakes={makes}
+      initialDeliveries={deliveries}
     />
   );
 }

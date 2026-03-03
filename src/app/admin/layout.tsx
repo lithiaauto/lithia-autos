@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Car, LayoutDashboard, List, MessageSquare, LogOut, FileText, Tag, ShoppingCart, CreditCard, Menu, X, Users } from 'lucide-react';
+import { Car, LayoutDashboard, List, MessageSquare, LogOut, FileText, Tag, ShoppingCart, CreditCard, Menu, X, Users, Truck } from 'lucide-react';
 
 export default function AdminLayout({
     children,
@@ -96,6 +96,14 @@ export default function AdminLayout({
                     >
                         <Users className="h-5 w-5" />
                         Manage Agents
+                    </Link>
+                    <Link
+                        href="/admin/deliveries"
+                        onClick={() => setIsMobileNavOpen(false)}
+                        className={`flex items-center gap-3 px-3 py-2 text-sm font-medium transition-colors ${pathname === '/admin/deliveries' ? 'text-gold-400 bg-navy-800' : 'text-navy-200 hover:text-light-50 hover:bg-navy-800'}`}
+                    >
+                        <Truck className="h-5 w-5" />
+                        Deliveries Manager
                     </Link>
                     <Link
                         href="/admin/makes"

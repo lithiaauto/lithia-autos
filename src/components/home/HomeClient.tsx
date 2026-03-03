@@ -7,6 +7,8 @@ import { Search, ArrowRight, Cog, Banknote, ShieldCheck, ChevronLeft, ChevronRig
 import { cn } from '@/lib/utils';
 import { Testimonials } from '@/components/ui/Testimonials';
 import { Partners } from '@/components/ui/Partners';
+import { HomeAboutSection } from '@/components/ui/HomeAboutSection';
+import { DeliveredByDriveway } from '@/components/ui/DeliveredByDriveway';
 import benz from '../../../public/images/benz.png';
 import rollsRoyce from '../../../public/images/rollsRoyce.png';
 
@@ -15,13 +17,15 @@ interface HomeClientProps {
   initialFeatured: any[];
   initialBlogs: any[];
   initialMakes: any[];
+  initialDeliveries: any[];
 }
 
 export function HomeClient({
   initialInventory,
   initialFeatured,
   initialBlogs,
-  initialMakes
+  initialMakes,
+  initialDeliveries
 }: HomeClientProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -558,6 +562,10 @@ export function HomeClient({
       </section>
 
       <Testimonials title="What our collectors say" />
+
+      <HomeAboutSection />
+
+      <DeliveredByDriveway deliveries={initialDeliveries} />
 
       {/* 7. News to help choose your car */}
       <section className="pt-12 pb-24 container mx-auto px-4 sm:px-6 lg:px-8">
