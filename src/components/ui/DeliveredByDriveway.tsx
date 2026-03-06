@@ -63,7 +63,7 @@ export function DeliveredByDriveway({ deliveries }: DeliveredByDrivewayProps) {
                     .animate-marquee {
                         display: flex;
                         width: max-content;
-                        animation: marquee 60s linear infinite;
+                        animation: marquee 120s linear infinite;
                         will-change: transform;
                     }
                     .hover\\:pause:hover {
