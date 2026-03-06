@@ -1,37 +1,38 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const PARTNERS = [
-    { name: 'RAM', logo: 'https://logowik.com/content/uploads/images/ram-black9664.jpg' },
-    { name: 'Rolls Royce', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkwuMOG80bPYHyqVRXUDy1En-J56S9fVF2Vg&s' },
-    { name: 'Volvo', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Volvo_logo.svg/640px-Volvo_logo.svg.png' },
-    { name: 'Volkswagen', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Volkswagen_Logo_till_1995.svg/640px-Volkswagen_Logo_till_1995.svg.png' },
-    { name: 'Lexus', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Lexus.svg/1280px-Lexus.svg.png?20241201141350' },
-    { name: 'Porsche', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Porsche_wordmark_black_rgb.svg/1280px-Porsche_wordmark_black_rgb.svg.png?20241015081352' },
-    { name: 'Ford', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/1280px-Ford_logo_flat.svg.png?20230831145925' },
-    { name: 'Toyota', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Toyota_black_logo.png/640px-Toyota_black_logo.png' },
-    { name: 'Land Rover', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Land_Rover_1978_logo.svg/1280px-Land_Rover_1978_logo.svg.png?20250908093549' },
-    { name: 'Kia', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/KIA_logo3.svg/1280px-KIA_logo3.svg.png?20241230161505' },
-    { name: 'Subaru', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Subaru_Logo_2024.svg/640px-Subaru_Logo_2024.svg.png' },
-    { name: 'McLaren', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/McLaren_2018_logo.svg/640px-McLaren_2018_logo.svg.png' },
-    { name: 'Mini', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/MINI_logo.svg/960px-MINI_logo.svg.png?20231121175537' },
-    { name: 'Nissan', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Nissan_logo_2001.svg/640px-Nissan_logo_2001.svg.png' },
-    { name: 'Mazda', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Mazda_logo_with_emblem%2C_new.svg/640px-Mazda_logo_with_emblem%2C_new.svg.png' },
-    { name: 'Maserati', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Maserati_logo_2.svg/640px-Maserati_logo_2.svg.png' },
-    { name: 'Lincoln', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Logo_Lincoln.svg/640px-Logo_Lincoln.svg.png' },
-    { name: 'Jaguar', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Jaguar_wordmark_2021.svg/640px-Jaguar_wordmark_2021.svg.png' },
-    { name: 'Infiniti', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Infiniti_logo_1989_-_no_text.svg/640px-Infiniti_logo_1989_-_no_text.svg.png' },
-    { name: 'Lamborghini', logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/1/1d/Lamborghini-Logo.svg/960px-Lamborghini-Logo.svg.png?20110820005836' },
-    { name: 'Jeep', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Jeep_logo.svg/640px-Jeep_logo.svg.png' },
-    { name: 'Honda', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Logo_Honda_F1.svg/640px-Logo_Honda_F1.svg.png' },
-    { name: 'GMC', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/GMC-Logo.svg/640px-GMC-Logo.svg.png' },
-    { name: 'Ferrari', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ferrari_wordmark.svg/640px-Ferrari_wordmark.svg.png' },
-    { name: 'FAIT', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/FIAT_logo_%282020%29.svg/640px-FIAT_logo_%282020%29.svg.png' },
-    { name: 'Genesis', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Genesis_division_emblem.svg/1280px-Genesis_division_emblem.svg.png?20240822194009' },
-    { name: 'Dodge', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Dodge_1962_logo.svg/640px-Dodge_1962_logo.svg.png' },
-    { name: 'Chrysler', logo: 'https://upload.wikimedia.org/wikipedia/it/thumb/8/8a/Logo_della_Chrysler_%28vecchio%29.svg/960px-Logo_della_Chrysler_%28vecchio%29.svg.png?_=20110627210943' },
-    { name: 'Acura', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Acura_logo.svg/640px-Acura_logo.svg.png' },
+    { name: 'RAM', logo: '/images/PartnerLogos/RAM.jpg' },
+    { name: 'Rolls Royce', logo: '/images/PartnerLogos/Rolls Royce.png' },
+    { name: 'Volvo', logo: '/images/PartnerLogos/Volvo.png' },
+    { name: 'Volkswagen', logo: '/images/PartnerLogos/Volkswagen.png' },
+    { name: 'Lexus', logo: '/images/PartnerLogos/Lexus.png' },
+    { name: 'Porsche', logo: '/images/PartnerLogos/Porsche.png' },
+    { name: 'Ford', logo: '/images/PartnerLogos/Ford_logo.png' },
+    { name: 'Toyota', logo: '/images/PartnerLogos/Toyota.png' },
+    { name: 'Land Rover', logo: '/images/PartnerLogos/Land_Rover.png' },
+    { name: 'Kia', logo: '/images/PartnerLogos/KIA_logo.png' },
+    { name: 'Subaru', logo: '/images/PartnerLogos/Subaru_logo.png' },
+    { name: 'McLaren', logo: '/images/PartnerLogos/McLaren_logo.png' },
+    { name: 'Mini', logo: '/images/PartnerLogos/MINI_logo.png' },
+    { name: 'Nissan', logo: '/images/PartnerLogos/Nissan_logo.png' },
+    { name: 'Mazda', logo: '/images/PartnerLogos/Mazda_logo.png' },
+    { name: 'Maserati', logo: '/images/PartnerLogos/Maserati_logo.png' },
+    { name: 'Lincoln', logo: '/images/PartnerLogos/Lincoln_logo.png' },
+    { name: 'Jaguar', logo: '/images/PartnerLogos/Jaguar-logo.png' },
+    { name: 'Infiniti', logo: '/images/PartnerLogos/Infiniti_logo.png' },
+    { name: 'Lamborghini', logo: '/images/PartnerLogos/Lamborghini-Logo.png' },
+    { name: 'Jeep', logo: '/images/PartnerLogos/Jeep_logo.png' },
+    { name: 'Honda', logo: '/images/PartnerLogos/Honda_Logo.png' },
+    { name: 'GMC', logo: '/images/PartnerLogos/GMC-Logo.png' },
+    { name: 'Ferrari', logo: '/images/PartnerLogos/Ferrari_wordmark.png' },
+    { name: 'FAIT', logo: '/images/PartnerLogos/Fiat_logo.png' },
+    { name: 'Genesis', logo: '/images/PartnerLogos/Genesis_logo.png' },
+    { name: 'Dodge', logo: '/images/PartnerLogos/Dodge_Logo.png' },
+    { name: 'Chrysler', logo: '/images/PartnerLogos/Chrysler_log.png' },
+    { name: 'Acura', logo: '/images/PartnerLogos/Acura_logo.png' },
 ];
 
 export function Partners() {
@@ -48,13 +49,14 @@ export function Partners() {
                 <div className="flex animate-marquee whitespace-nowrap gap-16 items-center py-4">
                     {[...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS].map((partner, i) => (
                         <div key={i} className="flex items-center justify-center grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer px-8 shrink-0">
-                            <img
-                                src={partner.logo}
-                                alt={partner.name}
-                                className="h-12 w-auto min-w-[60px] object-contain max-w-[120px] rendering-auto"
-                                style={{ aspectRatio: 'auto' }}
-                                loading="eager"
-                            />
+                            <div className="relative h-12 w-32">
+                                <Image
+                                    src={partner.logo}
+                                    alt={partner.name}
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
                         </div>
                     ))}
                 </div>

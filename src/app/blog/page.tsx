@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Search, Calendar, User, MessageCircle, ChevronRight, Facebook, Linkedin, Instagram } from 'lucide-react';
 import { BlogPost } from '@/data/blogs';
-import { Partners } from '@/components/ui/Partners';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+const Partners = dynamic(() => import('@/components/ui/Partners').then((mod) => mod.Partners), { ssr: false });
 
 export default function BlogListingPage() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -110,8 +112,8 @@ export default function BlogListingPage() {
                                         </div>
                                     </div>
 
-                                    <Link href={`/blog/${post.id}`} className="block relative rounded-3xl overflow-hidden mb-8 shadow-2xl">
-                                        <img src={post.image} alt={post.title} className="w-full group-hover:scale-105 transition-transform duration-700" />
+                                    <Link href={`/blog/${post.id}`} className="block relative h-64 md:h-96 rounded-3xl overflow-hidden mb-8 shadow-2xl">
+                                        <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                                     </Link>
 
                                     <p className="text-gray-600 text-lg leading-relaxed mb-10 line-clamp-3">
@@ -183,8 +185,8 @@ export default function BlogListingPage() {
                             <div className="space-y-6">
                                 {displayFeatured.map((post: any) => (
                                     <Link key={post.id} href={`/blog/${post.id}`} className="flex gap-4 group">
-                                        <div className="shrink-0 w-24 h-20 rounded-xl overflow-hidden shadow-md">
-                                            <img src={post.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform" alt={post.title} />
+                                        <div className="shrink-0 w-24 h-20 rounded-xl overflow-hidden shadow-md relative">
+                                            <Image src={post.image} fill className="object-cover group-hover:scale-110 transition-transform" alt={post.title} />
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <h4 className="text-[14px] font-black text-navy-900 mb-2 leading-tight group-hover:text-gold-500 transition-colors line-clamp-2">{post.title}</h4>

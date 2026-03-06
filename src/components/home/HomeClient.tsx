@@ -5,10 +5,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Search, ArrowRight, Cog, Banknote, ShieldCheck, ChevronLeft, ChevronRight, Star, Loader2, Car as CarIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Testimonials } from '@/components/ui/Testimonials';
-import { Partners } from '@/components/ui/Partners';
-import { HomeAboutSection } from '@/components/ui/HomeAboutSection';
-import { DeliveredByDriveway } from '@/components/ui/DeliveredByDriveway';
+import dynamic from 'next/dynamic';
+
+const Testimonials = dynamic(() => import('@/components/ui/Testimonials').then(mod => mod.Testimonials), { ssr: false });
+const Partners = dynamic(() => import('@/components/ui/Partners').then(mod => mod.Partners), { ssr: false });
+const HomeAboutSection = dynamic(() => import('@/components/ui/HomeAboutSection').then(mod => mod.HomeAboutSection), { ssr: false });
+const DeliveredByDriveway = dynamic(() => import('@/components/ui/DeliveredByDriveway').then(mod => mod.DeliveredByDriveway), { ssr: false });
+
 import benz from '../../../public/images/benz.png';
 import rollsRoyce from '../../../public/images/rollsRoyce.png';
 
@@ -79,7 +82,7 @@ export function HomeClient({
     if (finalLatestPicks.length <= 1) return;
     const timer = setInterval(() => {
       nextLatestPick();
-    }, 5000);
+    }, 4000);
     return () => clearInterval(timer);
   }, [finalLatestPicks.length]);
 
@@ -271,10 +274,11 @@ export function HomeClient({
           <Link href="/inventory" className="group relative overflow-hidden rounded-2xl border border-light-300 bg-white hover:border-gold-500 transition-all h-[180px] md:h-[240px] flex">
             {/* Mobile Background / Desktop Side Image */}
             <div className="absolute inset-0 md:relative md:w-1/2 overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=800"
                 alt="Browse inventory"
-                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                fill
+                className="object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent md:hidden" />
             </div>
@@ -289,9 +293,10 @@ export function HomeClient({
 
           <Link href="/contact" className="group relative overflow-hidden rounded-2xl border border-light-300 bg-white hover:border-gold-500 transition-all h-[180px] md:h-[240px] flex">
             <div className="absolute inset-0 md:relative md:w-1/2 overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800"
                 alt="Trade-in Value"
+                fill
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent md:hidden" />
@@ -307,9 +312,10 @@ export function HomeClient({
 
           <Link href="/inventory" className="group relative overflow-hidden rounded-2xl border border-light-300 bg-white hover:border-gold-500 transition-all h-[180px] md:h-[240px] flex">
             <div className="absolute inset-0 md:relative md:w-1/2 overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800"
                 alt="Apply For Financing"
+                fill
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent md:hidden" />
@@ -325,9 +331,10 @@ export function HomeClient({
 
           <Link href="/about" className="group relative overflow-hidden rounded-2xl border border-light-300 bg-white hover:border-gold-500 transition-all h-[180px] md:h-[240px] flex">
             <div className="absolute inset-0 md:relative md:w-1/2 overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=800"
                 alt="Expert Service"
+                fill
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent md:hidden" />
@@ -365,10 +372,11 @@ export function HomeClient({
                   <div className="absolute top-4 right-4 z-10">
                     <span className="bg-navy-900 text-white text-xs font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg">{car.year}</span>
                   </div>
-                  <img
+                  <Image
                     src={car.images?.[0] || 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=600&h=400'}
                     alt={car.title || `${car.year} ${car.make} ${car.carModel}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
@@ -461,13 +469,14 @@ export function HomeClient({
                     href={`/inventory?make=${encodeURIComponent(brand.name)}`}
                     className="border border-light-300 rounded-xl p-8 flex flex-col items-center justify-center hover:border-gold-500 hover:shadow-none transition-all duration-300 cursor-pointer bg-white h-48 hover:-translate-y-1 group shrink-0"
                   >
-                    <img
-                      src={brand.img}
-                      alt={brand.name}
-                      className="h-14 w-auto min-w-[50px] object-contain mb-5 grayscale group-hover:grayscale-0 transition-all rendering-auto"
-                      style={{ aspectRatio: 'auto' }}
-                      loading="eager"
-                    />
+                    <div className="relative h-14 w-32 mb-5">
+                      <Image
+                        src={brand.img}
+                        alt={brand.name}
+                        fill
+                        className="object-contain grayscale group-hover:grayscale-0 transition-all"
+                      />
+                    </div>
                     <span className="font-bold text-navy-900 line-clamp-1">{brand.name}</span>
                     <span className="text-[13px] text-navy-400 mt-1 font-medium">{brand.count} {brand.count === 1 ? 'Car' : 'Cars'}</span>
                   </Link>
@@ -528,7 +537,12 @@ export function HomeClient({
                 <div className="absolute top-4 right-4 z-10">
                   <span className="bg-navy-900 text-white text-xs font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg">{car.year}</span>
                 </div>
-                <img src={car.images?.[0] || `https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=600&h=400`} alt="Car" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <Image
+                  src={car.images?.[0] || `https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=600&h=400`}
+                  alt="Car"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
               </div>
               <div className="p-6 flex-grow flex flex-col">
                 <div className="text-gold-500 text-[13px] font-bold mb-2 tracking-wide uppercase">{car.type || car.bodyType}</div>
@@ -572,9 +586,10 @@ export function HomeClient({
             <div className="relative h-[350px] md:h-[550px] rounded-[20px] md:rounded-[40px] overflow-hidden shadow-2xl group">
               {finalLatestPicks.map((car: any, idx: number) => (
                 <div key={car._id || car.id || idx} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${idx === currentLatestPick ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'}`}>
-                  <img
+                  <Image
                     src={car.images?.[0] || 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1800'}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     alt={car.title || `${car.year} ${car.make} ${car.carModel}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/40 to-transparent flex items-center p-6 md:p-20">
@@ -622,7 +637,12 @@ export function HomeClient({
             {latestBlogs.map((post: any, i: number) => (
               <Link key={post.id || i} href={`/blog/${post.id || post._id}`} className="group flex flex-col h-full">
                 <div className="relative rounded-3xl overflow-hidden h-72 mb-8 shadow-xl">
-                  <img src={post.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={post.title} />
+                  <Image
+                    src={post.image}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    alt={post.title}
+                  />
                   <div className="absolute bottom-5 left-5 bg-gold-500 text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-lg">
                     {post.date}
                   </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Star } from 'lucide-react';
 
 export interface Testimonial {
@@ -123,14 +124,15 @@ export function Testimonials({
                                     </p>
                                 </div>
                                 <div className={`flex items-center gap-4 pt-6 border-t ${bgVariant === 'navy' ? 'border-navy-700' : 'border-light-100'}`}>
-                                    <img 
-                                        src={t.image} 
-                                        alt={t.name} 
-                                        className="w-8 h-8 md:w-12 md:h-12 rounded-full object-cover ring-2 ring-gold-500/20 shrink-0" 
-                                        loading="eager"
-                                        width={48}
-                                        height={48}
-                                    />
+                                    <div className="relative w-8 h-8 md:w-12 md:h-12 shrink-0">
+                                        <Image
+                                            src={t.image}
+                                            alt={t.name}
+                                            fill
+                                            unoptimized
+                                            className="rounded-full object-cover ring-2 ring-gold-500/20"
+                                        />
+                                    </div>
                                     <div>
                                         <p className={`font-bold ${bgVariant === 'navy' ? 'text-white' : 'text-navy-900'}`}>{t.name}</p>
                                         <p className={`text-xs ${bgVariant === 'navy' ? 'text-navy-400' : 'text-navy-400'}`}>{t.role}</p>

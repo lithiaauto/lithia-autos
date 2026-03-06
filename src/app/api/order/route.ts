@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     try {
         await dbConnect();
         const body = await request.json();
-        const { firstName, lastName, email, phone, address, city, state, zipCode, country, paymentMethod, cart, total, orderId } = body;
+        const { firstName, lastName, email, phone, address, city, state, zipCode, country, paymentMethod, paymentMethodLabel, cart, total, orderId } = body;
 
         if (!email || !cart || cart.length === 0) {
             return NextResponse.json({ error: 'Email and cart items are required' }, { status: 400 });
@@ -69,9 +69,9 @@ export async function POST(request: Request) {
                 <p style="margin: 5px 0 0 0;">Phone: ${phone}</p>
 
                 <h3>Payment Method</h3>
-                <p>${paymentMethod.replace('_', ' ').toUpperCase()}</p>
+                <p>${paymentMethodLabel || paymentMethod.replace('_', ' ').toUpperCase()}</p>
                 
-                ${paymentMethod === 'bank_transfer' ? `
+                ${paymentMethod === 'bank_transfer' || (paymentMethodLabel && paymentMethodLabel.toLowerCase().includes('bank')) ? `
                     <div style="background: #fff9e6; border-left: 4px solid #eab308; padding: 15px; margin-top: 20px;">
                         <p style="margin: 0; font-weight: bold;">Action Required: Bank Transfer</p>
                         <p style="margin: 5px 0 0 0; font-size: 14px;">Please transfer the total amount to the following account to finalize your purchase:</p>

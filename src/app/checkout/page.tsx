@@ -14,6 +14,7 @@ export default function CheckoutPage() {
     const { cart, total, clearCart } = useCart();
     const router = useRouter();
     const [isProcessing, setIsProcessing] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     // Form states
     const [formData, setFormData] = useState({
@@ -32,9 +33,9 @@ export default function CheckoutPage() {
     const [paymentMethods, setPaymentMethods] = useState<any[]>([]);
 
     React.useEffect(() => {
-        if (cart.length === 0) {
+        if (cart.length === 0 && !isSuccess) {
             router.push('/cart');
-        } else {
+        } else if (cart.length > 0) {
             fetch('/api/payment-methods')
                 .then(res => res.json())
                 .then(data => {
@@ -47,7 +48,7 @@ export default function CheckoutPage() {
         }
     }, [cart, router]);
 
-    if (cart.length === 0) {
+    if (cart.length === 0 && !isSuccess) {
         return null;
     }
 
@@ -68,6 +69,7 @@ export default function CheckoutPage() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...formData,
+                    paymentMethodLabel: paymentMethods.find(m => m._id === formData.paymentMethod)?.label || formData.paymentMethod,
                     cart,
                     total,
                     orderId
@@ -76,6 +78,7 @@ export default function CheckoutPage() {
 
             if (response.ok) {
                 // In a real app, we'd save to DB here
+                setIsSuccess(true);
                 clearCart();
                 setIsProcessing(false);
                 router.push(`/order-receipt/${orderId}`);
@@ -357,11 +360,20 @@ export default function CheckoutPage() {
                                 <span className="text-2xl font-bold text-navy-900 tracking-tight">${total.toLocaleString()}</span>
                             </div>
 
-                            <div className="bg-gold-50 p-4 rounded-2xl flex items-start gap-4">
+                            <div className="bg-gold-50 p-4 rounded-2xl flex items-start gap-4 mb-6">
                                 <ShieldCheck className="w-6 h-6 text-gold-600 shrink-0" />
                                 <div className="text-[12px] text-navy-700 leading-relaxed font-medium">
                                     <span className="font-bold block mb-0.5">Buyer Protection In Effect</span>
                                     All personal car sales are backed by our premium 30-day inspection guarantee.
+                                </div>
+                            </div>
+
+                            <div className="pt-6 border-t border-light-200">
+                                <p className="text-[11px] text-center text-navy-400 font-bold uppercase tracking-widest mb-4">Guaranteed Safe Checkout</p>
+                                <div className="flex items-center justify-center gap-6 opacity-60 grayscale">
+                                    <img src="/images/SecurePaymentProviders/Adyen_Corporate_Logo.png" alt="Adyen" className="h-5 object-contain" />
+                                    <img src="/images/SecurePaymentProviders/Worldpay_logo.png" alt="Worldpay" className="h-4 object-contain" />
+                                    <img src="/images/SecurePaymentProviders/Cloudflare-logo.png" alt="Cloudflare" className="h-5 object-contain" />
                                 </div>
                             </div>
                         </div>

@@ -7,8 +7,10 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { useToast } from '@/components/ui/Toast';
-import { Partners } from '@/components/ui/Partners';
+const Partners = dynamic(() => import('@/components/ui/Partners').then((mod) => mod.Partners), { ssr: false });
 import { Loader2 } from 'lucide-react';
 
 function InventoryContent() {
@@ -404,10 +406,11 @@ function InventoryContent() {
                                     <div className="absolute top-4 right-4 z-10">
                                         <span className="bg-navy-900/80 backdrop-blur-md text-white text-[11px] font-bold rounded-full w-9 h-9 flex items-center justify-center shadow-lg">{car.year}</span>
                                     </div>
-                                    <img
+                                    <Image
                                         src={car.images?.[0] || (car.img ? `https://images.unsplash.com/photo-${car.img}?auto=format&fit=crop&q=80&w=600&h=400` : 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=600&h=400')}
                                         alt={car.title || `${car.year} ${car.make} ${car.carModel}`}
-                                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                                        fill
+                                        className="object-cover hover:scale-110 transition-transform duration-700"
                                     />
                                 </div>
                                 <div className={`p-6 flex-grow flex flex-col ${viewType === 'list' ? 'justify-between' : ''}`}>

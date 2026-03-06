@@ -17,7 +17,7 @@ export default function OrderReceiptPage({ params }: { params: Promise<{ id: str
             try {
                 // To fetch an order safely, you might create an API route like /api/order/track/[orderId] or pass via localStorage/state. 
                 // We'll hit track endpoint:
-                const res = await fetch(`/api/order/track/${id}`);
+                const res = await fetch(`/api/order/${id}`);
                 if (res.ok) {
                     const data = await res.json();
                     setOrder(data);

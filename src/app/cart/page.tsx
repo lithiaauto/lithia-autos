@@ -112,11 +112,10 @@ export default function CartPage() {
                                 </button>
                             </Link>
 
-                            <div className="mt-6 flex items-center justify-center gap-6 opacity-40">
-                                {/* Trust Badges Placeholder */}
-                                <div className="h-6 w-12 bg-navy-100 rounded"></div>
-                                <div className="h-6 w-12 bg-navy-100 rounded"></div>
-                                <div className="h-6 w-12 bg-navy-100 rounded"></div>
+                            <div className="mt-6 flex items-center justify-center gap-6 opacity-40 grayscale">
+                                <img src="/images/SecurePaymentProviders/Adyen_Corporate_Logo.png" alt="Adyen" className="h-5 object-contain" />
+                                <img src="/images/SecurePaymentProviders/Worldpay_logo.png" alt="Worldpay" className="h-4 object-contain" />
+                                <img src="/images/SecurePaymentProviders/Cloudflare-logo.png" alt="Cloudflare" className="h-5 object-contain" />
                             </div>
                         </div>
                     </aside>
