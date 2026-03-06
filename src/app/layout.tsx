@@ -15,24 +15,26 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://lithiaautos.com"),
 
   title: {
-    default: "Lithia Autos | Exotic, Luxury & Performance Cars in [City, State]",
+    default: "Lithia Autos | Exotic, Luxury & Performance Cars Nationwide",
     template: "%s | Lithia Autos",
   },
 
   description:
-    "Lithia Autos is your destination for exotic, luxury, and high-performance vehicles in [City, State]. Explore supercars, sports cars, premium SUVs, and rare performance models with competitive pricing and verified clean titles.",
+    "Lithia Autos is your premium destination for exotic, luxury, and high-performance vehicles nationwide. Explore our curated selection of supercars, sports cars, luxury SUVs, and rare performance models with competitive pricing, verified clean titles, and white-glove driveway delivery.",
 
   keywords: [
-    "Exotic cars in [City, State]",
-    "Luxury car dealership",
+    "Exotic cars for sale",
+    "Buy luxury cars online",
+    "Luxury car dealership nationwide",
     "Performance cars for sale",
-    "Supercars",
-    "Sports cars",
-    "Premium vehicles",
+    "Supercars online dealer",
+    "Premium sports cars",
     "High performance vehicles",
     "Used exotic cars",
-    "Luxury SUVs",
-    "Lithia Autos"
+    "Pre-owned luxury SUVs",
+    "Lithia Autos",
+    "White-glove car delivery",
+    "Exotic auto sales"
   ],
 
   authors: [{ name: "Lithia Autos" }],
@@ -45,10 +47,10 @@ export const metadata: Metadata = {
     siteName: "Lithia Autos",
     title: "Exotic, Luxury & Performance Cars | Lithia Autos",
     description:
-      "Discover verified exotic and luxury vehicles at Lithia Autos. Supercars, sports cars, and premium performance models available now in [City, State].",
+      "Discover verified exotic and luxury vehicles at Lithia Autos. Supercars, sports cars, and premium performance models available now with nationwide delivery.",
     images: [
       {
-        url: "/thumbnail.png",
+        url: "https://lithiaautos.com/thumbnail.png",
         width: 1200,
         height: 630,
         alt: "Lithia Autos Exotic & Performance Cars",
@@ -56,12 +58,18 @@ export const metadata: Metadata = {
     ],
   },
 
+  // Optional but recommended by Facebook for better debugging
+  // You can replace "123456789" with a real App ID later if needed from developers.facebook.com
+  other: {
+    "fb:app_id": "123456789"
+  },
+
   twitter: {
     card: "summary_large_image",
     title: "Exotic & Luxury Cars | Lithia Autos",
     description:
-      "Shop high-performance and luxury vehicles at Lithia Autos in [City, State]. Clean titles. Premium selection.",
-    images: ["/thumbnail.png"],
+      "Shop high-performance and luxury vehicles at Lithia Autos. Clean titles. Premium selection. Nationwide driveway delivery.",
+    images: ["https://lithiaautos.com/thumbnail.png"],
   },
 
   robots: {
