@@ -12,7 +12,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lithia-auto.vercel.app"),
+  metadataBase: new URL("https://lithiaautos.com"),
 
   title: {
     default: "Lithia Autos | Exotic, Luxury & Performance Cars in [City, State]",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://lithia-auto.vercel.app",
+    url: "https://lithiaautos.com",
     siteName: "Lithia Autos",
     title: "Exotic, Luxury & Performance Cars | Lithia Autos",
     description:
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://lithia-auto.vercel.app",
+    canonical: "https://lithiaautos.com",
   },
 };
 
@@ -101,7 +101,7 @@ export default function RootLayout({
             <BackToTop />
           </ToastProvider>
         </CartProvider>
-        
+
         {/* Smartsupp Live Chat */}
         <script
           type="text/javascript"
