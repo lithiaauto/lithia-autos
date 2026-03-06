@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   // Optional but recommended by Facebook for better debugging
   // You can replace "123456789" with a real App ID later if needed from developers.facebook.com
   other: {
-    "fb:app_id": "123456789"
+    "fb:app_id": ["123456789"]
   },
 
   twitter: {
