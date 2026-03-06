@@ -88,7 +88,7 @@ export async function POST(request: Request) {
 
         // Send notification to admin
         await sendEmail(
-            process.env.SMTP_EMAIL || 'lithiaautos4@gmail.com',
+            process.env.SMTP_EMAIL || 'support@lithiaautos.com',
             `New Order Received: ${orderId}`,
             `<h2>New Order from ${firstName} ${lastName}</h2><p>Amount: $${total.toLocaleString()}</p><p>Check admin dashboard for details.</p>`
         );

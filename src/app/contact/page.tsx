@@ -103,7 +103,7 @@ export default function ContactPage() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-navy-900">Email Address</h4>
-                                <p className="text-gray-600 mt-1"><a href="mailto:lithiaautos4@gmail.com" className="hover:text-gold-500 transition-colors">lithiaautos4@gmail.com</a></p>
+                                <p className="text-gray-600 mt-1"><a href="mailto:support@lithiaautos.com" className="hover:text-gold-500 transition-colors">support@lithiaautos.com</a></p>
                             </div>
                         </div>
                     </div>

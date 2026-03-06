@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         `;
 
         const result = await sendEmail(
-            process.env.SMTP_EMAIL || 'lithiaautos4@gmail.com',
+            process.env.SMTP_EMAIL || 'support@lithiaautos.com',
             `Contact Form: ${subject}`,
             html
         );
