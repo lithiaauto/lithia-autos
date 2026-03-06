@@ -90,6 +90,7 @@ export const metadata: Metadata = {
 };
 
 import { CartProvider } from "@/context/CartContext";
+import { CookieConsent } from "@/components/layout/CookieConsent";
 
 export default function RootLayout({
   children,
@@ -109,6 +110,8 @@ export default function RootLayout({
             <BackToTop />
           </ToastProvider>
         </CartProvider>
+
+        <CookieConsent />
 
         {/* Smartsupp Live Chat */}
         <script
