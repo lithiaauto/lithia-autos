@@ -7,6 +7,7 @@ export interface IBlogPost extends Document {
     category: string;
     author: string;
     image: string;
+    authorImage?: string;
     date: string;
     commentsCount: number;
     tags: string[];
@@ -26,6 +27,7 @@ const BlogPostSchema: Schema = new Schema({
     category: { type: String, required: true },
     author: { type: String, required: true, default: 'Lithia Autos' },
     image: { type: String, required: true },
+    authorImage: { type: String },
     date: { type: String, required: true },
     commentsCount: { type: Number, default: 0 },
     tags: [{ type: String }],

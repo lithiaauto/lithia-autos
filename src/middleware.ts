@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
+    console.log(`[Middleware] Request path: ${pathname}`);
 
     // Check if we are in the admin dashboard area
     if (pathname.startsWith('/admin')) {

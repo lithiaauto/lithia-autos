@@ -104,7 +104,16 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
 
                         {/* Meta */}
                         <div className="flex flex-wrap items-center gap-6 text-[13px] text-navy-400 font-bold uppercase tracking-wider mb-8 pb-8 border-b border-light-100">
-                            <div className="flex items-center gap-2"><User className="w-4 h-4 text-gold-500" /> {post.author || 'Lithia Autos'}</div>
+                            <div className="flex items-center gap-2">
+                                {post.authorImage ? (
+                                    <div className="w-6 h-6 rounded-full overflow-hidden border border-gold-200">
+                                        <img src={post.authorImage} className="w-full h-full object-cover" alt={post.author} />
+                                    </div>
+                                ) : (
+                                    <User className="w-4 h-4 text-gold-500" />
+                                )}
+                                {post.author || 'Lithia Autos'}
+                            </div>
                             <div className="flex items-center gap-2 text-gold-600 font-black tracking-widest"><div className="w-1.5 h-1.5 rounded-full bg-gold-500"></div> {post.category}</div>
                             <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-gold-500" /> {post.date}</div>
                         </div>
