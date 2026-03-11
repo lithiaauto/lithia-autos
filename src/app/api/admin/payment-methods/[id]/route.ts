@@ -13,8 +13,9 @@ export async function PUT(
         const method = await PaymentMethod.findByIdAndUpdate(id, body, { new: true });
         if (!method) return NextResponse.json({ error: 'Not found' }, { status: 404 });
         return NextResponse.json(method);
-    } catch (error) {
-        return NextResponse.json({ error: 'Update failed' }, { status: 500 });
+    } catch (error: any) {
+        console.error('Update payment method failed:', error);
+        return NextResponse.json({ error: 'Update failed', details: error.message, stack: error.stack }, { status: 500 });
     }
 }
 
@@ -28,7 +29,8 @@ export async function DELETE(
         const method = await PaymentMethod.findByIdAndDelete(id);
         if (!method) return NextResponse.json({ error: 'Not found' }, { status: 404 });
         return NextResponse.json({ success: true });
-    } catch (error) {
-        return NextResponse.json({ error: 'Delete failed' }, { status: 500 });
+    } catch (error: any) {
+        console.error('Delete payment method failed:', error);
+        return NextResponse.json({ error: 'Delete failed', details: error.message, stack: error.stack }, { status: 500 });
     }
 }

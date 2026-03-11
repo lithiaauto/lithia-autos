@@ -196,6 +196,7 @@ export default function AdminPaymentMethodsPage() {
                         <form onSubmit={handleSubmit} className="p-6 space-y-4">
                             <div className="space-y-1">
                                 <label className="text-xs font-bold text-navy-600 uppercase">Label (Public)</label>
+                                <input type="text" className="w-full bg-light-50 border border-light-300 p-2.5 text-sm rounded-lg focus:border-gold-500 outline-none" value={form.label} onChange={e => setForm({ ...form, label: e.target.value })} placeholder="e.g. Bank Transfer" required />
                             </div>
                             <div className="space-y-1">
                                 <label className="text-xs font-bold text-navy-600 uppercase">Short Description (Checkout Tagline)</label>
