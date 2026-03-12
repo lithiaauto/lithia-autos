@@ -3,6 +3,17 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
+    const hostname = request.headers.get('host');
+    const protocol = request.headers.get('x-forwarded-proto') || 'http';
+
+    // Canonical Redirection: Redirect www to non-www and enforce HTTPS
+    // Only apply to production domain
+    if (hostname && (hostname.startsWith('www.') || protocol === 'http') && !hostname.includes('localhost')) {
+        const newHostname = hostname.replace(/^www\./, '');
+        const url = new URL(pathname, `https://${newHostname}`);
+        return NextResponse.redirect(url, 301);
+    }
+
     console.log(`[Middleware] Request path: ${pathname}`);
 
     // Check if we are in the admin dashboard area

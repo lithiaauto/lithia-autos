@@ -34,7 +34,14 @@ export const metadata: Metadata = {
     "Pre-owned luxury SUVs",
     "Lithia Autos",
     "White-glove car delivery",
-    "Exotic auto sales"
+    "Exotic auto sales",
+    "Lithia Auto Group",
+    "Lithia Motors sports cars",
+    "BMW for sale",
+    "Acura for sale",
+    "Chevrolet for sale",
+    "Ford for sale",
+    "Toyota for sale"
   ],
 
   authors: [{ name: "Lithia Autos" }],
@@ -45,9 +52,9 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://lithiaautos.com",
     siteName: "Lithia Autos",
-    title: "Exotic, Luxury & Performance Cars | Lithia Autos",
+    title: "Lithia Autos | Exotic, Luxury & Performance Cars Nationwide",
     description:
-      "Discover verified exotic and luxury vehicles at Lithia Autos. Supercars, sports cars, and premium performance models available now with nationwide delivery.",
+      "Looking for Lithia Autos? Shop our curated selection of verified exotic supercars, luxury SUVs, and performance vehicles with nationwide white-glove delivery.",
     images: [
       {
         url: "https://lithiaautos.com/thumbnail.png",
