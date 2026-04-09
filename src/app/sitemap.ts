@@ -1,7 +1,4 @@
 import { MetadataRoute } from 'next'
-import connectDB from '@/lib/db'
-import Car from '@/models/Car'
-import BlogPost from '@/models/BlogPost'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://lithiaautos.com'
@@ -87,34 +84,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  let carPages: MetadataRoute.Sitemap = []
-  let blogPages: MetadataRoute.Sitemap = []
-
-  try {
-    await connectDB()
-    
-    const cars = await Car.find({ isActive: true }).select('updatedAt').limit(500).lean()
-    carPages = cars.map((car: any) => ({
-      url: `${baseUrl}/inventory/${car._id}`,
-      lastModified: new Date(car.updatedAt || new Date()),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    }))
-  } catch (error) {
-    console.error('Error fetching cars for sitemap:', error)
-  }
-
-  try {
-    const blogs = await BlogPost.find({ isPublished: true }).select('updatedAt').limit(100).lean()
-    blogPages = blogs.map((blog: any) => ({
-      url: `${baseUrl}/blog/${blog._id}`,
-      lastModified: new Date(blog.updatedAt || new Date()),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    }))
-  } catch (error) {
-    console.error('Error fetching blogs for sitemap:', error)
-  }
-
-  return [...staticPages, ...carPages, ...blogPages]
+  return staticPages
 }
