@@ -15,33 +15,68 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://lithiaautos.com"),
 
   title: {
-    default: "Lithia Autos | Exotic, Luxury & Performance Cars Nationwide",
+    default: "Lithia Autos | Premium Exotic & Luxury Cars For Sale",
     template: "%s | Lithia Autos",
   },
 
   description:
-    "Lithia Autos is your premium destination for exotic, luxury, and high-performance vehicles nationwide. Explore our curated selection of supercars, sports cars, luxury SUVs, and rare performance models with competitive pricing, verified clean titles, and white-glove driveway delivery.",
+    "Discover premium exotic cars, luxury vehicles & high-performance sports cars for sale at Lithia Autos. Browse our curated collection of supercars, SUVs & sedans. Verified clean titles, competitive pricing & white-glove nationwide delivery.",
 
   keywords: [
-    "Exotic cars for sale",
-    "Buy luxury cars online",
-    "Luxury car dealership nationwide",
-    "Performance cars for sale",
-    "Supercars online dealer",
-    "Premium sports cars",
-    "High performance vehicles",
-    "Used exotic cars",
-    "Pre-owned luxury SUVs",
+    // Brand Name - consistently searched
     "Lithia Autos",
-    "White-glove car delivery",
-    "Exotic auto sales",
-    "Lithia Auto Group",
-    "Lithia Motors sports cars",
-    "BMW for sale",
-    "Acura for sale",
-    "Chevrolet for sale",
-    "Ford for sale",
-    "Toyota for sale"
+    "Lithia Autos dealership",
+    "Lithia Autos exotic cars",
+    "Lithia Autos luxury cars",
+    
+    // High-Volume General - stable consistent volume
+    "exotic cars for sale",
+    "luxury car dealership",
+    "used exotic cars for sale",
+    "buy luxury cars online",
+    "premium sports cars for sale",
+    "high performance vehicles",
+    "used luxury SUVs for sale",
+    "sports cars for sale near me",
+    "luxury car dealership near me",
+    "used cars for sale near me",
+    "cars for sale near me",
+    "car dealership near me",
+    
+    // Brand-specific - very stable high volume
+    "Lamborghini for sale",
+    "Ferrari for sale",
+    "Porsche for sale",
+    "McLaren for sale",
+    "Bentley for sale",
+    "Rolls Royce for sale",
+    "Aston Martin for sale",
+    "BMW luxury cars",
+    "Mercedes Benz for sale",
+    "Audi luxury vehicles",
+    "Range Rover for sale",
+    "Masersati for sale",
+    "Lexus car dealership",
+    "Tesla car dealership",
+    
+    // Transactional - strong intent
+    "buy exotic car",
+    "purchase luxury car",
+    "used car dealer",
+    "pre-owned luxury cars",
+    "certified pre-owned exotic cars",
+    
+    // Vehicle Type
+    "luxury SUV for sale",
+    "sports coupe for sale",
+    "convertible for sale",
+    "luxury sedan for sale",
+    
+    // Service/Feature
+    "white glove car delivery",
+    "nationwide luxury car delivery",
+    "exotic car financing",
+    "luxury car financing"
   ],
 
   authors: [{ name: "Lithia Autos" }],
@@ -52,31 +87,32 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://lithiaautos.com",
     siteName: "Lithia Autos",
-    title: "Lithia Autos | Exotic, Luxury & Performance Cars Nationwide",
+    title: "Lithia Autos | Premium Exotic & Luxury Cars For Sale",
     description:
-      "Looking for Lithia Autos? Shop our curated selection of verified exotic supercars, luxury SUVs, and performance vehicles with nationwide white-glove delivery.",
+      "Shop our curated selection of exotic supercars, luxury SUVs and high-performance vehicles. Verified clean titles, competitive pricing & white-glove delivery across the USA.",
     images: [
       {
         url: "https://lithiaautos.com/thumbnail.png",
         width: 1200,
         height: 630,
-        alt: "Lithia Autos Exotic & Performance Cars",
+        alt: "Lithia Autos - Premium Exotic & Luxury Cars",
       },
     ],
+    locale: "en_US",
   },
 
-  // Optional but recommended by Facebook for better debugging
-  // You can replace "123456789" with a real App ID later if needed from developers.facebook.com
   other: {
     "fb:app_id": ["123456789"]
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Exotic & Luxury Cars | Lithia Autos",
+    title: "Lithia Autos | Exotic & Luxury Cars For Sale",
     description:
-      "Shop high-performance and luxury vehicles at Lithia Autos. Clean titles. Premium selection. Nationwide driveway delivery.",
+      "Discover premium exotic cars & luxury vehicles at Lithia Autos. Verified clean titles, competitive pricing, nationwide delivery.",
     images: ["https://lithiaautos.com/thumbnail.png"],
+    site: "@lithiaautos",
+    creator: "@lithiaautos",
   },
 
   robots: {
@@ -93,6 +129,9 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: "https://lithiaautos.com",
+    languages: {
+      en: "https://lithiaautos.com",
+    },
   },
 };
 
