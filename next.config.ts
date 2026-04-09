@@ -38,6 +38,17 @@ const nextConfig: NextConfig = {
         destination: '/admin/blog',
         permanent: true,
       },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.lithiaautos.com',
+          },
+        ],
+        destination: 'https://lithiaautos.com/:path*',
+        permanent: true,
+      },
     ];
   },
 };
