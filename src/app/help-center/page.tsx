@@ -71,7 +71,7 @@ export default function HelpCenterPage() {
                                 <div className="w-12 h-12 bg-navy-50 rounded-xl flex items-center justify-center text-navy-900"><Phone className="w-6 h-6" /></div>
                                 <div>
                                     <p className="text-navy-400 text-xs font-bold uppercase tracking-widest mb-1">WhatsApp us</p>
-                                    <p className="text-navy-900 font-bold">+1 (464) 215-9186</p>
+                                    <p className="text-navy-900 font-bold">+1 (936) 218-3514</p>
                                 </div>
                             </a>
                         </div>
