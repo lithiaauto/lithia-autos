@@ -311,7 +311,7 @@ export default function InventoryForm({ initialData, isEdit, id }: InventoryForm
                 sellerInfo: {
                     name: 'Lithia Autos Advantage',
                     phone: '(708) 419-2546',
-                    location: 'Bridgeview, IL'
+                    location: 'Medford, OR'
                 }
             };
 

@@ -24,9 +24,9 @@ export async function POST(request: Request) {
             carModel: data.carModel || data.model, // Handle both for safety
             fuelType: data.fuelType || data.fuel,
             sellerInfo: {
-                name: data.sellerName || 'Advantage Chevrolet of Bridgeview',
+                name: data.sellerName || 'Lithia Autos of Medford',
                 phone: data.sellerPhone || '(708) 419-2546',
-                location: data.sellerLocation || 'Bridgeview, IL'
+                location: data.sellerLocation || 'Medford, OR'
             },
             features: data.features || {
                 convenience: [],

@@ -83,7 +83,7 @@ export default function ContactPage() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-navy-900">Showroom Location</h4>
-                                <p className="text-gray-600 mt-1">8200 S Harlem Ave<br />Bridgeview, IL 60455</p>
+                                <p className="text-gray-600 mt-1">150 N Bartlett St<br />Medford, OR 97501</p>
                             </div>
                         </div>
 
