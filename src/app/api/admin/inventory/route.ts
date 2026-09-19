@@ -24,9 +24,9 @@ export async function POST(request: Request) {
             carModel: data.carModel || data.model, // Handle both for safety
             fuelType: data.fuelType || data.fuel,
             sellerInfo: {
-                name: data.sellerName || 'Lithia Autos of Medford',
+                name: data.sellerName || 'Lithia Autos',
                 phone: data.sellerPhone || '(708) 419-2546',
-                location: data.sellerLocation || 'Medford, OR'
+                location: data.sellerLocation || 'United States'
             },
             features: data.features || {
                 convenience: [],

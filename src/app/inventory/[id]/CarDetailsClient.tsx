@@ -167,7 +167,7 @@ export default function CarDetailsClient({ car, carId }: { car: any; carId: stri
                                 ) : (
                                     <>
                                         <p>This {car.year} {car.make} {car.carModel} represents the pinnacle of automotive engineering and design. Meticulously maintained and presented in excellent condition, it offers a perfect blend of performance, comfort, and reliability.</p>
-                                        <p>Whether you're navigating city streets or embarking on a long-distance journey, this vehicle is equipped to provide an exceptional driving experience. Visit our showroom in Medford, OR for a test drive.</p>
+                                        <p>Whether you're navigating city streets or embarking on a long-distance journey, this vehicle is equipped to provide an exceptional driving experience. Visit our showroom in the United States for a test drive.</p>
                                     </>
                                 )}
                             </div>
