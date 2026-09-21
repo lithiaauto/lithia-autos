@@ -67,11 +67,11 @@ export default function HelpCenterPage() {
                                     <p className="text-white font-bold">support@lithiaautos.com</p>
                                 </div>
                             </a>
-                            <a href="https://wa.me/14642159186" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-6 bg-white border border-light-200 rounded-3xl hover:border-gold-500 transition-all">
+                            <a href="https://wa.me/2727661823" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-6 bg-white border border-light-200 rounded-3xl hover:border-gold-500 transition-all">
                                 <div className="w-12 h-12 bg-navy-50 rounded-xl flex items-center justify-center text-navy-900"><Phone className="w-6 h-6" /></div>
                                 <div>
                                     <p className="text-navy-400 text-xs font-bold uppercase tracking-widest mb-1">WhatsApp us</p>
-                                    <p className="text-navy-900 font-bold">+1 (936) 218-3514</p>
+                                    <p className="text-navy-900 font-bold">+1 (272) 766-1823</p>
                                 </div>
                             </a>
                         </div>

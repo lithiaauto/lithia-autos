@@ -93,7 +93,7 @@ export default function ContactPage() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-navy-900">Phone</h4>
-                                <p className="text-gray-600 mt-1"><a href="https://wa.me/19362183514" target="_blank" rel="noopener noreferrer" className="hover:text-gold-500 transition-colors">+1 (936) 218-3514 </a></p>
+                                <p className="text-gray-600 mt-1"><a href="https://wa.me/2727661823" target="_blank" rel="noopener noreferrer" className="hover:text-gold-500 transition-colors">+1 (272) 766-1823 </a></p>
                             </div>
                         </div>
 
